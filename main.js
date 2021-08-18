@@ -18,16 +18,16 @@ for (const link of links) {
 }
 
 /*mudar o header quanto tiver scroll */
-const header = document.querySelector('#header')
-const navHeight = header.offsetHeight
+function changeHeaderScroll() {
+  const header = document.querySelector('#header')
+  const navHeight = header.offsetHeight
 
-window.addEventListener('scroll', function () {
   if (window.scrollY >= navHeight) {
     header.classList.add('scroll')
   } else {
     header.classList.remove('scroll')
   }
-})
+}
 
 /*Slides dos testemunhos */
 
@@ -55,8 +55,25 @@ scrollReveal.reveal(
   #about .image, #about .text,
   #services header, #services .card,
   #testimonials header, #testimonials .testimonials,
-  #contact .text, #contact .links
-
+  #contact .text, #contact .links,
+  footer .brand, footer .social
 `,
   { interval: 100 }
 )
+
+/*Botão para voltar para o topo */
+function backToTop() {
+  const button = document.querySelector('.back-to-top')
+
+  if (window.scrollY > 1060) {
+    button.classList.add('show')
+  } else {
+    button.classList.remove('show')
+  }
+}
+
+/*Listener de Scroll*/
+window.addEventListener('scroll', function () {
+  changeHeaderScroll()
+  backToTop()
+})
