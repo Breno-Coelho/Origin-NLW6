@@ -28,3 +28,35 @@ window.addEventListener('scroll', function () {
     header.classList.remove('scroll')
   }
 })
+
+/*Slides dos testemunhos */
+
+const swiper = new Swiper('.swiper-container', {
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination'
+  },
+  mousewheel: true,
+  keyboard: true
+})
+
+/*scrollReveal: mostra os elementos devagarinho conforme vai descendo a página*/
+
+const scrollReveal = ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 800,
+  reset: true
+})
+
+scrollReveal.reveal(
+  `
+  #home .image, #home .text,
+  #about .image, #about .text,
+  #services header, #services .card,
+  #testimonials header, #testimonials .testimonials,
+  #contact .text, #contact .links
+
+`,
+  { interval: 100 }
+)
